@@ -1,0 +1,421 @@
+<!--          
+не смотри этот говнокод                
+              - Fordash
+ > t.me/ovh_sas 
+ -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta property="og:title" content="FurryBaza(FurBaza) — заходи в наш фурри чатик">
+<meta property="og:description" content="FurryBaza(FurBaza) — заходи в наш дружелюбный фурри чатик">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://furbaza.ru">
+<meta name="robots" content="index, follow">
+<meta property="og:image" content="https://furbaza.ru/telegram.jpg">
+<link rel="icon" href="logo.ico" type="image/png">
+  
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107028234', 'ym');
+
+    ym(107028234, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/107028234" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  
+<title>FurryBaza(FurBaza) - Телеграм чат для фурри</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+--bg:#0e0e14;
+--card:#1f1f33;
+--text:#eaeaf0;
+--muted:#a2a2b8;
+--accent:#8b5cf6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:var(--bg);color:var(--text)}
+
+@media (max-width: 600px){
+  header.shrink{
+    padding:6px 14px;
+  }
+
+  header.shrink .logo{
+    font-size:18px;
+  }
+
+  header.shrink nav a{
+    padding:4px 6px;
+    font-size:13px;
+  }
+
+  header.shrink .tg-btn{
+    padding:6px 12px;
+    font-size:13px;
+  }
+}
+
+header{
+position:sticky;top:0;z-index:100;
+background:rgba(15,15,25,.85);
+backdrop-filter:blur(10px);
+padding:16px 24px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #2a2a44;
+flex-wrap:wrap;
+}
+
+.logo{color:var(--accent);font-size:22px;font-weight:bold}
+nav{display:flex;flex-wrap:wrap;align-items:center}
+nav a{margin-left:16px;color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;transition:.3s}
+nav a:hover{color:var(--accent);background:rgba(139,92,246,0.1)}
+
+.tg-btn{
+margin-left:16px;
+padding:8px 16px;
+background:var(--accent);
+color:#fff;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+.tg-btn:hover{opacity:.85;transform:translateY(-2px)}
+
+.rules-btn-wrapper{text-align:center;margin:20px 0}
+.rules-btn-wrapper a{
+padding:12px 24px;
+background:var(--accent);
+color:#fff;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+font-size:18px;
+}
+.rules-btn-wrapper a:hover{opacity:.85;transform:translateY(-2px)}
+
+.container{max-width:1200px;margin:auto;padding:70px 16px}
+section{margin-bottom:70px;scroll-margin-top:120px}
+h2{font-size:28px;margin-bottom:16px}
+p{color:var(--muted);line-height:1.7}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{
+background:var(--card);
+border-radius:18px;
+padding:16px;
+text-align:center;
+cursor:pointer;
+transition:.3s
+}
+.card:hover{transform:translateY(-6px)}
+.card img{
+width:96px;height:96px;border-radius:50%;
+object-fit:cover;border:2px solid var(--accent);margin-bottom:12px
+}
+
+.accordion{background:var(--card);border-radius:14px;overflow:hidden;margin-top:12px}
+.accordion-header{padding:14px;cursor:pointer;font-weight:bold}
+.accordion-content{
+max-height:0;overflow:hidden;
+transition:.4s;color:var(--muted);padding:0 14px
+}
+.accordion.active .accordion-content{max-height:300px;padding:12px 14px}
+
+.modal{
+position:fixed;inset:0;
+background:rgba(0,0,0,.75);
+display:none;align-items:center;justify-content:center;
+padding:16px;
+z-index:200;
+}
+.modal.active{display:flex}
+
+.modal-box{
+width:100%;
+max-width:420px;
+background:var(--card);
+border-radius:20px;
+overflow:hidden;
+animation:fadeUp .4s;
+position:relative;
+}
+
+.admin-header{
+height:140px;
+background-size:cover;
+background-position:center;
+position:relative;
+z-index:1;
+}
+
+.admin-header::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent,rgba(0,0,0,.8));
+z-index:2;
+}
+
+.admin-info{
+margin-top:-48px;
+padding:0 16px 16px;
+text-align:center;
+position:relative;
+z-index:5; 
+}
+
+.admin-info img{
+width:96px;
+height:96px;
+border-radius:50%;
+border:3px solid var(--accent); 
+object-fit:cover;
+background:var(--card);
+}
+
+.close{text-align:center;color:var(--accent);cursor:pointer;padding-bottom:12px}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+@media (max-width:600px){
+header{flex-direction:column;align-items:flex-start}
+nav{margin-top:8px}
+nav a,.tg-btn{margin:4px 6px}
+.container{padding:70px 12px}
+.grid{grid-template-columns:1fr}
+h2{font-size:24px}
+.rules-btn-wrapper a{font-size:16px;padding:10px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">FurBaza</div>
+
+<nav>
+<a href="#about">О фурри</a>
+<a href="#community">Сообщество</a>
+<a href="#rules">Правила</a>
+<a href="#admins">Администрация</a>
+<a href="#active">Активные</a>
+<a href="#contacts">Контакты</a>
+</nav>
+
+<a href="https://t.me/FurBaza" class="tg-btn" target="_blank">Telegram</a>
+</header>
+
+<div class="container">
+
+<section id="about">
+<h2>О фурри</h2>
+<p>
+Фурри — это сообщество людей, интересующихся антропоморфными животными.
+Здесь сочетаются творчество, персонажи (фурсоны), общение и самовыражение.
+</p>
+</section>
+
+<section id="community">
+<h2>Сообщество</h2>
+<p>
+FurBaza объединяет художников, программистов, геймеров и просто тех,
+кому близка фурри-культура. Мы за адекватность, уважение и комфорт.
+</p>
+</section>
+
+<div class="rules-btn-wrapper">
+<a href="https://t.me/FurBaza" target="_blank">Присоединиться в Telegram</a>
+</div>
+
+<section id="rules">
+<h2>Правила</h2>
+
+<div class="accordion">
+<div class="accordion-header">Основные правила</div>
+<div class="accordion-content">
+• Уважайте участников<br>
+• Без конфликтов и токсичности<br>
+• Запрещён спам<br>
+• Соблюдайте тематику
+</div>
+</div>
+
+<div class="accordion">
+<div class="accordion-header">Контент</div>
+<div class="accordion-content">
+Арты, обсуждения, мемы разрешены.<br>
+NSFW — только в разрешённых местах.
+</div>
+</div>
+
+</section>
+
+<section id="admins">
+<h2>Администрация</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openAdmin(
+'vlad/null.gif',
+'vlad/admin.png',
+'Pavel Durov',
+'главный защитник фурри',
+'все обращения принимаются в FurryBaza@gmail.com'
+)">
+<img src="vlad/admin.png">
+<h3>Pavel Durov</h3><p>Владелец</p>
+</div>
+
+
+<div class="card" onclick="openAdmin(
+'ovh/banner.jpg',
+'ovh/admin.jpg',
+'Fordash',
+'ᗜ⩊ᗜ',
+'Создатель сайта, защиты, домена'
+)">
+<img src="ovh/admin.jpg">
+<h3>@ovh_sas</h3><p>Разработчик</p>
+</div>
+
+<div class="card" onclick="openAdmin(
+'admin2/banner.jpg',
+'admin2/admin.gif',
+'Furflux',
+'>⩊<',
+'Контроль порядка и координация модераторов.'
+)">
+<img src="admin2/admin.gif">
+<h3>Furflux</h3><p>Гл. Администратор</p>
+</div>
+
+</div>
+</section>
+
+<section id="active">
+<h2>Активные участники</h2>
+<div class="grid">
+<div class="card">
+<img src="users/user.jpg">
+<h3>пусто</h3><p>скоро тут будет</p>
+</div>
+<div class="card">
+<img src="users/user.jpg">
+<h3>пусто</h3><p>скоро тут будет</p>
+</div>
+</div>
+</section>
+
+<section id="contacts">
+<h2>Контакты</h2>
+<div class="grid">
+<div class="card">
+<img src="telegram.jpg">
+<h3>Telegram</h3>
+<p>Основной канал общения</p>
+<a href="https://t.me/FurBaza" target="_blank"
+   style="display:inline-block;margin-top:8px;padding:8px 16px;background:var(--accent);color:#fff;border-radius:999px;text-decoration:none;transition:.3s">
+   Перейти в Telegram
+</a>
+</div>
+</div>
+</section>
+
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+<div class="admin-header" id="mBanner"></div>
+<div class="admin-info">
+<img id="mAvatar">
+<h3 id="mName"></h3>
+<p id="mRole"></p>
+<p id="mDesc" style="margin-top:10px"></p>
+</div>
+<div class="close" onclick="closeAdmin()">Закрыть</div>
+</div>
+
+</div>
+
+<script>
+function openAdmin(banner,avatar,name,role,desc){
+    mBanner.style.backgroundImage = `url(${banner})`
+    mAvatar.src = avatar
+    mName.innerText = name
+    mRole.innerText = role
+    mDesc.innerText = desc
+    modal.classList.add("active")
+}
+
+function closeAdmin(){
+    modal.classList.remove("active")
+}
+
+/* accordion click */
+document.querySelectorAll(".accordion-header").forEach(h => {
+    h.onclick = () => h.parentElement.classList.toggle("active")
+})
+
+function openRulesIfHash() {
+    if (location.hash === "#rules") {
+        const rules = document.getElementById("rules")
+        rules.querySelectorAll(".accordion").forEach(acc => acc.classList.add("active"))
+        rules.scrollIntoView({behavior:"smooth", block:"center"})
+    }
+}
+
+window.addEventListener("load", openRulesIfHash)
+window.addEventListener("hashchange", openRulesIfHash)
+</script>
+<script>
+(function(){
+  const header = document.querySelector("header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth > 600) return; 
+
+    const current = window.scrollY;
+
+    if (current > 60 && current > lastScroll) {
+      header.classList.add("shrink");
+    } else if (current < 20) {
+      header.classList.remove("shrink");
+    }
+
+    lastScroll = current;
+  });
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
